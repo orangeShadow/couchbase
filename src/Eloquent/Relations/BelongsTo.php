@@ -36,7 +36,7 @@ class BelongsTo extends \Illuminate\Database\Eloquent\Relations\BelongsTo
 
     protected function getRelatedKeyFrom(Model $model)
     {
-        $key = $this->ownerKey=== 'meta().id' ? $model->getKeyNameAlias():$this->ownerKey;
+        $key = $this->ownerKey === $model->getKeyName() ? $model->getKeyNameAlias() : $this->ownerKey;
 
         return $model->{$key};
     }
