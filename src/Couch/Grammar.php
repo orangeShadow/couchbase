@@ -18,8 +18,8 @@ class Grammar extends BaseGrammar
 
     protected function whereIn(Builder $query, $where)
     {
-        if (! empty($where['values'])) {
-            return $this->wrapValue($where['column']).' in ['.$this->parameterize($where['values']).']';
+        if (!empty($where['values'])) {
+            return $this->wrapValue($where['column']) . ' in [' . $this->parameterize($where['values']) . ']';
         }
 
         return '0 = 1';

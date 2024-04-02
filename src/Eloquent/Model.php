@@ -25,7 +25,7 @@ class Model extends BaseModel
 
     public function newEloquentBuilder($query): Builder
     {
-        /** @var QueryBuilder $query*/
+        /** @var QueryBuilder $query */
         return new Builder($query);
     }
 
@@ -38,8 +38,7 @@ class Model extends BaseModel
     {
         $key = Str::of($this->table)
             ->explode('.')
-            ->last()
-        ;
+            ->last();
         $key = Str::replace('`', '', $key);
         $data = $attributes[$key] ?? $attributes;
 

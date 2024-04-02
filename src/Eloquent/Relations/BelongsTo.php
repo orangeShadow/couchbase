@@ -37,11 +37,11 @@ class BelongsTo extends \Illuminate\Database\Eloquent\Relations\BelongsTo
     /**
      * Get the value of the model's foreign key.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
      * @return mixed
      */
     protected function getForeignKeyFrom(Model $model)
     {
-        return Arr::get($model, $this->foreignKey) ;
+        return Arr::get($model, $this->foreignKey);
     }
 }
