@@ -23,11 +23,11 @@ class Model extends BaseModel
 
     protected $primaryKey = 'meta().id';
 
-    protected $primaryKeyAias = 'id';
+    protected $primaryKeyAlias = 'id';
 
     public function getKeyNameAlias():string
     {
-        return $this->primaryKeyAias;
+        return $this->primaryKeyAlias;
     }
 
     public function newEloquentBuilder($query): Builder
