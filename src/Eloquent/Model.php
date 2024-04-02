@@ -2,8 +2,10 @@
 
 namespace nailfor\Couchbase\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Str;
+use nailfor\Couchbase\Eloquent\Relations\BelongsTo;
 use nailfor\Couchbase\Query\QueryBuilder;
 
 /**
@@ -42,5 +44,10 @@ class Model extends BaseModel
         $data = $attributes[$key] ?? $attributes;
 
         return parent::newFromBuilder($data, $connection);
+    }
+
+    protected function newBelongsTo(Builder $query, BaseModel $child, $foreignKey, $ownerKey, $relation)
+    {
+        return new BelongsTo($query, $child, $foreignKey, $ownerKey, $relation);
     }
 }
