@@ -34,6 +34,13 @@ class BelongsTo extends \Illuminate\Database\Eloquent\Relations\BelongsTo
         }
     }
 
+    protected function getRelatedKeyFrom(Model $model)
+    {
+        $key = $this->ownerKey === $model->getKeyName() ? $model->getKeyNameAlias() : $this->ownerKey;
+
+        return $model->{$key};
+    }
+
     /**
      * Get the value of the model's foreign key.
      *

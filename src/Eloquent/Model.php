@@ -21,7 +21,14 @@ class Model extends BaseModel
      */
     protected $connection = 'couchbase';
 
-    protected $primaryKey = '_id';
+    protected $primaryKey = 'meta().id';
+
+    protected $primaryKeyAlias = 'id';
+
+    public function getKeyNameAlias():string
+    {
+        return $this->primaryKeyAlias;
+    }
 
     public function newEloquentBuilder($query): Builder
     {
