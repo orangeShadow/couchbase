@@ -38,7 +38,7 @@ class BelongsTo extends \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         $key = $this->ownerKey === $model->getKeyName() ? $model->getKeyNameAlias() : $this->ownerKey;
 
-        return $model->{$key};
+        return Arr::get($model,$key);
     }
 
     /**
