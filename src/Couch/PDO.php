@@ -46,19 +46,10 @@ class PDO
 
     public function fetchAll(): ?array
     {
-        $sql = $this->getSql();
-
         $queryOptions = new QueryOptions();
-        $queryOptions->namedParameters([]);
-        $result = $this->client->query($sql, $queryOptions);
+        $queryOptions->positionalParameters($this->bindings);
+        $result = $this->client->query($this->query, $queryOptions);
 
         return $result->rows();
-    }
-
-    protected function getSql(): string
-    {
-        $wrapped_str = str_replace('?', "'?'", $this->query);
-
-        return \Str::replaceArray('?', $this->bindings, $wrapped_str);
     }
 }
